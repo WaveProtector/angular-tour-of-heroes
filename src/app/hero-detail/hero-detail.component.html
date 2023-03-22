@@ -7,7 +7,12 @@
       <input id="hero-name" [(ngModel)]="hero.name" placeholder="name">
     </div>
   
-  </div>
+</div>
+
+<label for="pet">Pet:</label>
+<select name="pet" [(ngModel)]="selectedPet">
+  <option *ngFor="let pet of pets" [value]="pet">{{ pet.name }}</option>
+</select>
 
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="save()">save</button>

@@ -4,6 +4,8 @@ import { Location } from '@angular/common';
 
 import { Hero } from '../hero';
 import { HeroService } from '../hero.service';
+import { Pet } from '../pet';
+import { PetService } from '../pet.service';
 
 @Component({
   selector: 'app-hero-detail',
@@ -15,13 +17,17 @@ export class HeroDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private heroService: HeroService,
+    private petService: PetService,
     private location: Location
   ) {}
 
   @Input() hero?: Hero;
+  pets: Pet[] = []; // list of available pets
+  selectedPet?: Pet; // the pet selected for the hero
 
   ngOnInit(): void {
     this.getHero();
+    this.getPets();
   }
   
   getHero(): void {
@@ -30,15 +36,20 @@ export class HeroDetailComponent {
       .subscribe(hero => this.hero = hero);
   }
 
+  getPets(): void {
+    this.pets = this.petService.getPets();
+  }
+
   goBack(): void {
     this.location.back();
   }
 
   save(): void {
     if (this.hero) {
+      this.hero.pet = this.selectedPet?.name || ''; // set the selected pet for the hero
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
     }
   }
-  
+
 }

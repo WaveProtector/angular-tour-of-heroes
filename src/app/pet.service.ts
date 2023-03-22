@@ -1,20 +1,17 @@
 import { Injectable } from '@angular/core';
+import { Pet } from './pet';
+import { PETS } from './mock-pets';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PetService {
-  private pets = [
-    { name: 'Max' },
-    { name: 'Spark' },
-    { name: 'Tails' },
-    { name: 'Sonic' },
-    { name: 'Knuckles' },
-  ];
+  getPets(): Pet[] {
+    return PETS;
+  }
 
-  constructor() { }
-
-  getPets() {
-    return this.pets;
+  // new method to get a pet by name
+  getPetByName(name: string): Pet {
+    return PETS.find(pet => pet.name === name)!;
   }
 }
