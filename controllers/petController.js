@@ -44,3 +44,53 @@ exports.pet_get = (req, res) => {
     }
   );
 };
+
+// Display Author delete form on GET.
+exports.pet_delete_get = (req, res, next) => {
+  async.parallel(
+    {
+      pet(callback) {
+        Pet.findById(req.params.id).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      if (results.pet == null) {
+        // No results.
+        res.redirect("/catalog/pets");
+      }
+      // Successful, so render.
+      res.render("pet_delete", {
+        title: "Delete Pet",
+        pet: results.pet,
+      });
+    }
+  );
+};
+
+// Handle Author delete on POST.
+exports.pet_delete_post = (req, res) => {
+  async.parallel(
+    {
+      pet(callback) {
+        Pet.findById(req.body.heroid).exec(callback);
+      },
+    },
+    (err, results) => {
+      if (err) {
+        return next(err);
+      }
+      // Success
+      // Author has no books. Delete object and redirect to the list of authors.
+      Pet.findByIdAndRemove(req.body.heroid, (err) => {
+        if (err) {
+          return next(err);
+        }
+        // Success - go to author list
+        res.redirect("/catalog/pets");
+      });
+    }
+  );
+};

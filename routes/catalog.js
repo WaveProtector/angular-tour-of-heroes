@@ -18,6 +18,7 @@ router.post("/hero/:id", hero_controller.hero_get);
 // GET request to delete Book.
 router.get("/hero", hero_controller.hero_create_post);
 
+router.get("/hero/delete", hero_controller.hero_delete_get);
 // POST request to delete Book.
 router.post("/hero/:id/delete", hero_controller.hero_delete_post);
 
@@ -33,5 +34,6 @@ router.get("/pets", pet_controller.pets_get);
 // POST request for creating Author.
 router.post("/pet/:id", pet_controller.pet_get);
 
+router.delete("/pet/id", pet_controller.pet_delete_post);
 
 module.exports = router;
