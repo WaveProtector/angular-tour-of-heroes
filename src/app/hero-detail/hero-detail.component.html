@@ -9,10 +9,13 @@
   
 </div>
 
-<label for="pet">Pet:</label>
+<label for="pet">Choose a pet:</label>
 <select name="pet" [(ngModel)]="selectedPet">
-  <option *ngFor="let pet of pets" [value]="pet">{{ pet.name }}</option>
+  <option *ngFor="let pet of pets" [value]="pet">{{ pet }}</option>
 </select>
+<div *ngIf="hero">
+  <label for="pet-name">Pet:{{hero.pet}} </label>
+</div>
 
   <button type="button" (click)="goBack()">go back</button>
   <button type="button" (click)="save()">save</button>

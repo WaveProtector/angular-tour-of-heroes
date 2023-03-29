@@ -12,7 +12,7 @@ import { PetService } from '../pet.service';
 })
 export class DashboardComponent implements OnInit {
   heroes: Hero[] = [];
-  pets: Pet[] = [];
+  pets: String[] = [];
 
   constructor(
     private heroService: HeroService,

@@ -6,4 +6,5 @@ export const PETS: Pet[] = [
     { name: 'Tails' },
     { name: 'Sonic' },
     { name: 'Knuckles' },
+    { name: 'shadow' },
 ];

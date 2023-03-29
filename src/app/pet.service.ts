@@ -6,11 +6,11 @@ import { PETS } from './mock-pets';
   providedIn: 'root'
 })
 export class PetService {
-  getPets(): Pet[] {
-    return PETS;
+  getPets(): String[] {
+    return PETS.map(pet => pet.name);
   }
 
-  // new method to get a pet by name
+  // Get a pet by name
   getPetByName(name: string): Pet {
     return PETS.find(pet => pet.name === name)!;
   }

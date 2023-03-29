@@ -22,8 +22,8 @@ export class HeroDetailComponent {
   ) {}
 
   @Input() hero?: Hero;
-  pets: Pet[] = []; // list of available pets
-  selectedPet?: Pet; // the pet selected for the hero
+  pets: String[] = []; // list of available pets
+  selectedPet?: string = ''; // the pet selected for the hero
 
   ngOnInit(): void {
     this.getHero();
@@ -45,8 +45,8 @@ export class HeroDetailComponent {
   }
 
   save(): void {
-    if (this.hero) {
-      this.hero.pet = this.selectedPet?.name || ''; // set the selected pet for the hero
+    if (this.hero && this.selectedPet) {
+      this.hero.pet = this.selectedPet; // set the selected pet for the hero
       this.heroService.updateHero(this.hero)
         .subscribe(() => this.goBack());
     }

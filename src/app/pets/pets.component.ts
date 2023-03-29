@@ -18,4 +18,8 @@ export class PetsComponent implements OnInit {
   getPets(): void {
     this.pets = this.petService.getPets();
   }
+
+  sortPets(): void { 
+    this.pets.sort((a, b) => a.localeCompare(b));
+  }
 }
