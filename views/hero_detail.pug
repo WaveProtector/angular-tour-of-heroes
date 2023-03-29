@@ -1,0 +1,18 @@
+extends layout
+
+block content
+
+  h1 Hero: #{hero.name}
+  p #{hero.id}
+
+  div(style='margin-left:20px;margin-top:20px')
+
+    h4 Pets
+
+    dl
+      each pet in hero_pets
+        dt
+        dd #{pet.name}
+
+      else
+        p This hero has no pets.

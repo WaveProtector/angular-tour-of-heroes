@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  h1= title
+  p Welcome to #[em Tour of heroes].
+
+  h1 Dynamic content
+
+  if error
+    p Error getting dynamic content.
+  else
+    p The tour of heroes has the following:
+
+    ul
+      li #[strong Heroes:] !{data.hero_count}
+      li #[strong Pets:] !{data.pet_count}
